@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Technova 2026 | Coming Soon</title>
-    <meta name="description" content="Technova 2026 - A spectacular tech fest by CSE AI, PBR Visvodaya Institute of Technology and Science. February 20-21, 2026.">
+    <meta name="description"
+        content="Technova 2026 - A spectacular tech fest by CSE AI, PBR Visvodaya Institute of Technology and Science. February 20-21, 2026.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -26,10 +30,30 @@
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --glow-cyan: 0 0 40px rgba(0, 245, 255, 0.5);
             --glow-purple: 0 0 40px rgba(123, 44, 191, 0.5);
+
+            /* Fluid Typography Scale */
+            --text-xs: clamp(0.7rem, 1.5vw, 0.85rem);
+            --text-sm: clamp(0.8rem, 2vw, 0.95rem);
+            --text-base: clamp(0.9rem, 2.5vw, 1.1rem);
+            --text-lg: clamp(1rem, 3vw, 1.3rem);
+            --text-xl: clamp(1.2rem, 3.5vw, 1.6rem);
+            --text-2xl: clamp(1.5rem, 4vw, 2rem);
+            --text-3xl: clamp(2rem, 5vw, 3rem);
+            --text-4xl: clamp(2.5rem, 7vw, 4.5rem);
+            --text-hero: clamp(2.8rem, 10vw, 9rem);
+
+            /* Spacing Scale */
+            --space-xs: clamp(0.25rem, 1vw, 0.5rem);
+            --space-sm: clamp(0.5rem, 2vw, 1rem);
+            --space-md: clamp(1rem, 3vw, 1.5rem);
+            --space-lg: clamp(1.5rem, 4vw, 2.5rem);
+            --space-xl: clamp(2rem, 5vw, 4rem);
+            --space-2xl: clamp(3rem, 7vw, 6rem);
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
@@ -37,8 +61,10 @@
             background: var(--darker);
             color: #ffffff;
             min-height: 100vh;
+            min-height: 100dvh;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.6;
         }
 
         /* Animated Background */
@@ -49,7 +75,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 80%, rgba(123, 44, 191, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(255, 0, 110, 0.05) 0%, transparent 60%),
@@ -64,6 +90,7 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .particle {
@@ -78,16 +105,21 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(100vh) rotate(0deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.6;
             }
+
             90% {
                 opacity: 0.6;
             }
+
             100% {
                 transform: translateY(-100vh) rotate(720deg);
                 opacity: 0;
@@ -102,17 +134,19 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes gridMove {
             0% {
                 transform: perspective(500px) rotateX(60deg) translateY(0);
             }
+
             100% {
                 transform: perspective(500px) rotateX(60deg) translateY(50px);
             }
@@ -120,10 +154,12 @@
 
         /* Main Container */
         .container {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: var(--space-md);
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -135,54 +171,71 @@
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid rgba(0, 245, 255, 0.3);
             border-radius: 50px;
-            margin-bottom: 30px;
+            margin-bottom: var(--space-lg);
             animation: pulse 2s infinite;
         }
 
         .badge::before {
             content: '';
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
             background: var(--primary);
             border-radius: 50%;
             animation: blink 1s infinite;
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4); }
-            50% { box-shadow: 0 0 0 10px rgba(0, 245, 255, 0); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(0, 245, 255, 0);
+            }
         }
 
         .badge-text {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 3px;
+            font-size: var(--text-xs);
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--primary);
+            white-space: nowrap;
         }
 
         /* Logo Section */
         .logo-section {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: var(--space-lg);
+            width: 100%;
         }
 
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(4rem, 12vw, 10rem);
+            font-size: var(--text-hero);
             font-weight: 900;
-            letter-spacing: 10px;
+            letter-spacing: clamp(2px, 1vw, 10px);
             background: linear-gradient(135deg, #00f5ff 0%, #7b2cbf 50%, #ff006e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -190,67 +243,72 @@
             text-shadow: none;
             position: relative;
             animation: titleGlow 3s ease-in-out infinite;
+            word-break: break-word;
+            line-height: 1.1;
         }
 
         @keyframes titleGlow {
-            0%, 100% {
-                filter: drop-shadow(0 0 30px rgba(0, 245, 255, 0.5)) 
-                        drop-shadow(0 0 60px rgba(123, 44, 191, 0.3));
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5)) drop-shadow(0 0 40px rgba(123, 44, 191, 0.3));
             }
+
             50% {
-                filter: drop-shadow(0 0 50px rgba(0, 245, 255, 0.8)) 
-                        drop-shadow(0 0 80px rgba(123, 44, 191, 0.5));
+                filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.8)) drop-shadow(0 0 60px rgba(123, 44, 191, 0.5));
             }
         }
 
         .year {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: var(--text-2xl);
             font-weight: 400;
-            letter-spacing: 20px;
+            letter-spacing: clamp(5px, 2vw, 20px);
             color: rgba(255, 255, 255, 0.6);
-            margin-top: 10px;
+            margin-top: var(--space-xs);
         }
 
         .tagline {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-size: var(--text-base);
             font-weight: 500;
-            letter-spacing: 8px;
+            letter-spacing: clamp(2px, 1vw, 8px);
             color: rgba(255, 255, 255, 0.7);
-            margin-top: 20px;
+            margin-top: var(--space-sm);
             text-transform: uppercase;
         }
 
         /* Countdown Section */
         .countdown-section {
-            margin: 50px 0;
+            margin: var(--space-xl) 0;
             text-align: center;
+            width: 100%;
         }
 
         .countdown-title {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 18px;
+            font-size: var(--text-sm);
             font-weight: 600;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--primary);
-            margin-bottom: 30px;
+            margin-bottom: var(--space-md);
         }
 
         .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-sm);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .countdown-item {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(0, 245, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px 25px;
-            min-width: 120px;
+            border-radius: clamp(12px, 2vw, 20px);
+            padding: var(--space-md) var(--space-sm);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -274,41 +332,40 @@
 
         .countdown-number {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: var(--text-3xl);
             font-weight: 700;
             background: linear-gradient(180deg, #ffffff 0%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1;
+            line-height: 1.2;
         }
 
         .countdown-label {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 14px;
+            font-size: var(--text-xs);
             font-weight: 500;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.5);
-            margin-top: 10px;
+            margin-top: var(--space-xs);
         }
 
         /* Event Days Section */
         .event-days {
-            display: flex;
-            gap: 30px;
-            margin: 50px 0;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+            width: 100%;
+            max-width: 800px;
         }
 
         .event-day {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            min-width: 300px;
-            max-width: 350px;
+            border-radius: clamp(16px, 3vw, 24px);
+            padding: var(--space-lg);
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
@@ -331,9 +388,9 @@
         }
 
         .event-day:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: rgba(0, 245, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), var(--glow-cyan);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), var(--glow-cyan);
         }
 
         .event-day.technical {
@@ -346,22 +403,22 @@
 
         .event-day.non-technical:hover {
             border-color: rgba(255, 0, 110, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 0, 110, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 0, 110, 0.3);
         }
 
         .day-badge {
             display: inline-block;
-            padding: 8px 20px;
+            padding: var(--space-xs) var(--space-md);
             background: rgba(var(--card-color), 0.1);
             border: 1px solid var(--card-color);
             border-radius: 50px;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 12px;
+            font-size: var(--text-xs);
             font-weight: 600;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--card-color);
-            margin-bottom: 20px;
+            margin-bottom: var(--space-sm);
         }
 
         .technical .day-badge {
@@ -378,27 +435,28 @@
 
         .day-date {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: var(--text-4xl);
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: var(--space-xs);
+            line-height: 1.1;
         }
 
         .day-month {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.2rem;
+            font-size: var(--text-base);
             font-weight: 500;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 25px;
+            margin-bottom: var(--space-md);
         }
 
         .day-type {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+            font-size: var(--text-xl);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: var(--space-xs);
         }
 
         .technical .day-type {
@@ -410,45 +468,47 @@
         }
 
         .day-description {
-            font-size: 0.95rem;
+            font-size: var(--text-sm);
             color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* Institute Info */
         .institute-info {
             text-align: center;
-            margin-top: 60px;
-            padding: 40px;
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            border-radius: clamp(12px, 2vw, 20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            max-width: 600px;
         }
 
         .presented-by {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 14px;
+            font-size: var(--text-xs);
             font-weight: 500;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 15px;
+            margin-bottom: var(--space-sm);
         }
 
         .department {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: var(--text-xl);
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: var(--space-xs);
         }
 
         .college {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: var(--text-base);
             font-weight: 500;
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
@@ -457,9 +517,10 @@
         /* Decorative Elements */
         .corner-decoration {
             position: fixed;
-            width: 200px;
-            height: 200px;
+            width: clamp(60px, 15vw, 200px);
+            height: clamp(60px, 15vw, 200px);
             pointer-events: none;
+            z-index: 1;
         }
 
         .corner-decoration.top-left {
@@ -493,40 +554,259 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            margin-top: 40px;
+            padding: var(--space-lg);
+            margin-top: var(--space-lg);
+            width: 100%;
         }
 
         .footer-text {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 14px;
+            font-size: var(--text-xs);
             letter-spacing: 2px;
             color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* ========================================
+           RESPONSIVE BREAKPOINTS
+           ======================================== */
+
+        /* Extra Small Devices - Small Phones (< 360px) */
+        @media (max-width: 359px) {
+            .container {
+                padding: var(--space-sm);
+            }
+
+            .countdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-xs);
+            }
+
             .countdown-item {
-                min-width: 80px;
-                padding: 20px 15px;
+                padding: var(--space-sm);
+            }
+
+            .badge {
+                padding: 8px 16px;
+            }
+
+            .badge-text {
+                letter-spacing: 1px;
             }
 
             .event-day {
-                min-width: 100%;
-                padding: 30px;
+                padding: var(--space-md);
+            }
+
+            .institute-info {
+                padding: var(--space-md);
             }
 
             .corner-decoration {
-                width: 100px;
-                height: 100px;
+                display: none;
+            }
+        }
+
+        /* Small Phones (360px - 480px) */
+        @media (min-width: 360px) and (max-width: 479px) {
+            .countdown {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
             }
 
-            .main-title {
-                letter-spacing: 5px;
+            .countdown-item {
+                padding: var(--space-sm) 4px;
             }
 
-            .year {
-                letter-spacing: 10px;
+            .countdown-label {
+                font-size: 0.6rem;
+                letter-spacing: 0;
+            }
+        }
+
+        /* Large Phones (480px - 640px) */
+        @media (min-width: 480px) and (max-width: 639px) {
+            .countdown {
+                grid-template-columns: repeat(4, 1fr);
+                gap: var(--space-sm);
+                max-width: 450px;
+            }
+        }
+
+        /* Small Tablets (640px - 768px) */
+        @media (min-width: 640px) and (max-width: 767px) {
+            .event-days {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .countdown {
+                max-width: 500px;
+            }
+        }
+
+        /* Tablets & Small Laptops (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .event-days {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+
+            .countdown {
+                max-width: 550px;
+            }
+
+            .countdown-item:hover {
+                transform: translateY(-8px);
+            }
+
+            .event-day:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Laptops & Desktops (1024px - 1280px) */
+        @media (min-width: 1024px) {
+            .container {
+                padding: var(--space-lg);
+            }
+
+            .countdown {
+                max-width: 600px;
+                gap: var(--space-md);
+            }
+
+            .countdown-item {
+                padding: var(--space-lg) var(--space-md);
+            }
+
+            .event-days {
+                gap: var(--space-lg);
+            }
+
+            .event-day {
+                padding: var(--space-xl);
+            }
+        }
+
+        /* Large Desktops (1280px+) */
+        @media (min-width: 1280px) {
+            .container {
+                padding: var(--space-xl);
+            }
+
+            .countdown-item:hover {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            .event-day:hover {
+                transform: translateY(-12px) scale(1.02);
+            }
+        }
+
+        /* Ultra-wide Screens (1600px+) */
+        @media (min-width: 1600px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        /* Height-based adjustments for small screens */
+        @media (max-height: 700px) and (max-width: 768px) {
+            .container {
+                justify-content: flex-start;
+                padding-top: var(--space-lg);
+            }
+
+            .countdown-section {
+                margin: var(--space-md) 0;
+            }
+
+            .event-days {
+                margin: var(--space-md) 0;
+            }
+        }
+
+        /* Landscape orientation for phones */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                justify-content: flex-start;
+                padding: var(--space-sm);
+            }
+
+            .badge {
+                margin-bottom: var(--space-sm);
+            }
+
+            .logo-section {
+                margin-bottom: var(--space-sm);
+            }
+
+            .countdown-section {
+                margin: var(--space-sm) 0;
+            }
+
+            .event-days {
+                grid-template-columns: repeat(2, 1fr);
+                margin: var(--space-sm) 0;
+            }
+
+            .event-day {
+                padding: var(--space-sm);
+            }
+
+            .institute-info {
+                margin-top: var(--space-sm);
+                padding: var(--space-sm);
+            }
+
+            footer {
+                padding: var(--space-sm);
+                margin-top: var(--space-sm);
+            }
+        }
+
+        /* High DPI / Retina Displays */
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            .particle {
+                box-shadow: 0 0 8px var(--primary);
+            }
+        }
+
+        /* Reduced Motion - Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .particle {
+                display: none;
+            }
+
+            .grid-overlay {
+                animation: none;
+            }
+        }
+
+        /* Touch Devices - Remove hover effects that don't work well */
+        @media (hover: none) and (pointer: coarse) {
+
+            .countdown-item:hover,
+            .event-day:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .countdown-item:active {
+                transform: scale(0.98);
+            }
+
+            .event-day:active {
+                transform: scale(0.99);
             }
         }
 
@@ -536,15 +816,54 @@
         }
 
         @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
-            100% { transform: translate(0); }
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-3px, 3px);
+            }
+
+            40% {
+                transform: translate(-3px, -3px);
+            }
+
+            60% {
+                transform: translate(3px, 3px);
+            }
+
+            80% {
+                transform: translate(3px, -3px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+
+            .bg-animation,
+            .particles,
+            .grid-overlay,
+            .corner-decoration {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .main-title {
+                -webkit-text-fill-color: #7b2cbf;
+                color: #7b2cbf;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Background Elements -->
     <div class="bg-animation"></div>
@@ -601,14 +920,16 @@
                 <div class="day-date">20</div>
                 <div class="day-month">February 2026</div>
                 <div class="day-type">Technical Events</div>
-                <p class="day-description">Showcase your coding skills, problem-solving abilities, and technical prowess in exciting competitions.</p>
+                <p class="day-description">Showcase your coding skills, problem-solving abilities, and technical prowess
+                    in exciting competitions.</p>
             </div>
             <div class="event-day non-technical">
                 <div class="day-badge">Day 2</div>
                 <div class="day-date">21</div>
                 <div class="day-month">February 2026</div>
                 <div class="day-type">Non-Technical Events</div>
-                <p class="day-description">Unleash your creativity and have fun with engaging activities, games, and cultural events.</p>
+                <p class="day-description">Unleash your creativity and have fun with engaging activities, games, and
+                    cultural events.</p>
             </div>
         </div>
 
@@ -654,10 +975,11 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Create floating particles
+        // Create floating particles - Reduced for mobile performance
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 15 : 30;
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -665,19 +987,34 @@
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
                 particle.style.animationDelay = (Math.random() * 10) + 's';
-                particle.style.width = (Math.random() * 4 + 2) + 'px';
-                particle.style.height = particle.style.width;
+
+                const size = isMobile ? (Math.random() * 3 + 1) : (Math.random() * 4 + 2);
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
 
                 // Random colors
                 const colors = ['#00f5ff', '#7b2cbf', '#ff006e'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 ${isMobile ? 6 : 10}px ${color}`;
 
                 particlesContainer.appendChild(particle);
             }
         }
 
+        // Recreate particles on resize for optimal performance
+        let resizeTimeout;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function () {
+                const particlesContainer = document.getElementById('particles');
+                particlesContainer.innerHTML = '';
+                createParticles();
+            }, 250);
+        });
+
         createParticles();
     </script>
 </body>
+
 </html>
