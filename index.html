@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Technova 2026 | Coming Soon</title>
+    <title>Technova 2026 | CSE AI Tech Fest</title>
     <meta name="description"
         content="Technova 2026 - A spectacular tech fest by CSE AI, PBR Visvodaya Institute of Technology and Science. February 20-21, 2026.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             margin: 0;
@@ -30,8 +33,6 @@
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --glow-cyan: 0 0 40px rgba(0, 245, 255, 0.5);
             --glow-purple: 0 0 40px rgba(123, 44, 191, 0.5);
-
-            /* Fluid Typography Scale */
             --text-xs: clamp(0.7rem, 1.5vw, 0.85rem);
             --text-sm: clamp(0.8rem, 2vw, 0.95rem);
             --text-base: clamp(0.9rem, 2.5vw, 1.1rem);
@@ -41,8 +42,6 @@
             --text-3xl: clamp(2rem, 5vw, 3rem);
             --text-4xl: clamp(2.5rem, 7vw, 4.5rem);
             --text-hero: clamp(2.8rem, 10vw, 9rem);
-
-            /* Spacing Scale */
             --space-xs: clamp(0.25rem, 1vw, 0.5rem);
             --space-sm: clamp(0.5rem, 2vw, 1rem);
             --space-md: clamp(1rem, 3vw, 1.5rem);
@@ -61,13 +60,11 @@
             background: var(--darker);
             color: #ffffff;
             min-height: 100vh;
-            min-height: 100dvh;
             overflow-x: hidden;
             position: relative;
             line-height: 1.6;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -126,7 +123,6 @@
             }
         }
 
-        /* Grid Lines */
         .grid-overlay {
             position: fixed;
             top: 0;
@@ -152,22 +148,17 @@
             }
         }
 
-        /* Main Container */
         .container {
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: var(--space-md);
-            min-height: 100vh;
-            min-height: 100dvh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             position: relative;
         }
 
-        /* Header Badge */
         .badge {
             display: inline-flex;
             align-items: center;
@@ -178,6 +169,7 @@
             border-radius: 50px;
             margin-bottom: var(--space-lg);
             animation: pulse 2s infinite;
+            margin-top: var(--space-lg);
         }
 
         .badge::before {
@@ -224,7 +216,6 @@
             white-space: nowrap;
         }
 
-        /* Logo Section */
         .logo-section {
             text-align: center;
             margin-bottom: var(--space-lg);
@@ -240,7 +231,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: none;
             position: relative;
             animation: titleGlow 3s ease-in-out infinite;
             word-break: break-word;
@@ -278,7 +268,6 @@
             text-transform: uppercase;
         }
 
-        /* Countdown Section */
         .countdown-section {
             margin: var(--space-xl) 0;
             text-align: center;
@@ -351,7 +340,6 @@
             margin-top: var(--space-xs);
         }
 
-        /* Event Days Section */
         .event-days {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -409,27 +397,24 @@
         .day-badge {
             display: inline-block;
             padding: var(--space-xs) var(--space-md);
-            background: rgba(var(--card-color), 0.1);
-            border: 1px solid var(--card-color);
             border-radius: 50px;
             font-family: 'Rajdhani', sans-serif;
             font-size: var(--text-xs);
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--card-color);
             margin-bottom: var(--space-sm);
         }
 
         .technical .day-badge {
             background: rgba(0, 245, 255, 0.1);
-            border-color: #00f5ff;
+            border: 1px solid #00f5ff;
             color: #00f5ff;
         }
 
         .non-technical .day-badge {
             background: rgba(255, 0, 110, 0.1);
-            border-color: #ff006e;
+            border: 1px solid #ff006e;
             color: #ff006e;
         }
 
@@ -473,6 +458,329 @@
             line-height: 1.7;
         }
 
+        /* Section Titles */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: var(--space-sm) auto 0;
+            border-radius: 2px;
+        }
+
+        /* Technical Events Cards */
+        .events-section {
+            width: 100%;
+            padding: var(--space-xl) 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .flip-card {
+            height: 380px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+
+        .flip-card:hover .flip-card-front {
+            border-color: var(--primary);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(0, 245, 255, 0.1));
+            border: 1px solid var(--primary);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-lg);
+        }
+
+        .event-icon {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            animation: iconFloat 3s ease-in-out infinite;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 44, 191, 0.1));
+            border: 2px solid rgba(0, 245, 255, 0.3);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .event-icon i {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+        }
+
+        .flip-card:hover .event-icon {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .event-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .event-coordinator {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-xs);
+        }
+
+        .coordinator-phone {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--text-xs);
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        .event-date-info {
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--text-lg);
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .event-brief {
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+
+        .more-info-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: var(--text-sm);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 245, 255, 0.3);
+        }
+
+        .more-info-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.5);
+        }
+
+        /* Coordinators Section */
+        .coordinators-section {
+            width: 100%;
+            padding: var(--space-xl) 0;
+        }
+
+        .coordinators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .coordinator-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .coordinator-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .coordinator-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .coordinator-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .coordinator-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .coordinator-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-5px);
+        }
+
+        .coordinator-role {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--text-xs);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(0, 245, 255, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .coordinator-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: var(--space-xs);
+        }
+
+        .coordinator-designation {
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: var(--space-sm);
+        }
+
+        .coordinator-contact {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: var(--text-sm);
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        /* Student Coordinators */
+        .student-coordinators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            width: 100%;
+            max-width: 1000px;
+            margin: var(--space-lg) auto 0;
+        }
+
+        .student-card {
+            background: rgba(255, 0, 110, 0.05);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            border-radius: 12px;
+            padding: var(--space-md);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .student-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+            transform: scale(1.02);
+        }
+
+        .student-card .coordinator-role {
+            background: rgba(255, 0, 110, 0.1);
+            color: var(--accent);
+        }
+
         /* Institute Info */
         .institute-info {
             text-align: center;
@@ -514,7 +822,6 @@
             line-height: 1.6;
         }
 
-        /* Decorative Elements */
         .corner-decoration {
             position: fixed;
             width: clamp(60px, 15vw, 200px);
@@ -551,7 +858,6 @@
             border-right: 2px solid rgba(255, 0, 110, 0.3);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: var(--space-lg);
@@ -566,213 +872,35 @@
             color: rgba(255, 255, 255, 0.3);
         }
 
-        /* ========================================
-           RESPONSIVE BREAKPOINTS
-           ======================================== */
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
 
-        /* Extra Small Devices - Small Phones (< 360px) */
-        @media (max-width: 359px) {
-            .container {
-                padding: var(--space-sm);
+            .flip-card {
+                height: 350px;
+            }
+
+            .coordinators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .student-coordinators {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .student-coordinators {
+                grid-template-columns: 1fr;
             }
 
             .countdown {
                 grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-xs);
-            }
-
-            .countdown-item {
-                padding: var(--space-sm);
-            }
-
-            .badge {
-                padding: 8px 16px;
-            }
-
-            .badge-text {
-                letter-spacing: 1px;
-            }
-
-            .event-day {
-                padding: var(--space-md);
-            }
-
-            .institute-info {
-                padding: var(--space-md);
-            }
-
-            .corner-decoration {
-                display: none;
             }
         }
 
-        /* Small Phones (360px - 480px) */
-        @media (min-width: 360px) and (max-width: 479px) {
-            .countdown {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-            }
-
-            .countdown-item {
-                padding: var(--space-sm) 4px;
-            }
-
-            .countdown-label {
-                font-size: 0.6rem;
-                letter-spacing: 0;
-            }
-        }
-
-        /* Large Phones (480px - 640px) */
-        @media (min-width: 480px) and (max-width: 639px) {
-            .countdown {
-                grid-template-columns: repeat(4, 1fr);
-                gap: var(--space-sm);
-                max-width: 450px;
-            }
-        }
-
-        /* Small Tablets (640px - 768px) */
-        @media (min-width: 640px) and (max-width: 767px) {
-            .event-days {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .countdown {
-                max-width: 500px;
-            }
-        }
-
-        /* Tablets & Small Laptops (768px - 1024px) */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .event-days {
-                grid-template-columns: repeat(2, 1fr);
-                gap: var(--space-lg);
-            }
-
-            .countdown {
-                max-width: 550px;
-            }
-
-            .countdown-item:hover {
-                transform: translateY(-8px);
-            }
-
-            .event-day:hover {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Laptops & Desktops (1024px - 1280px) */
-        @media (min-width: 1024px) {
-            .container {
-                padding: var(--space-lg);
-            }
-
-            .countdown {
-                max-width: 600px;
-                gap: var(--space-md);
-            }
-
-            .countdown-item {
-                padding: var(--space-lg) var(--space-md);
-            }
-
-            .event-days {
-                gap: var(--space-lg);
-            }
-
-            .event-day {
-                padding: var(--space-xl);
-            }
-        }
-
-        /* Large Desktops (1280px+) */
-        @media (min-width: 1280px) {
-            .container {
-                padding: var(--space-xl);
-            }
-
-            .countdown-item:hover {
-                transform: translateY(-10px) scale(1.02);
-            }
-
-            .event-day:hover {
-                transform: translateY(-12px) scale(1.02);
-            }
-        }
-
-        /* Ultra-wide Screens (1600px+) */
-        @media (min-width: 1600px) {
-            html {
-                font-size: 18px;
-            }
-        }
-
-        /* Height-based adjustments for small screens */
-        @media (max-height: 700px) and (max-width: 768px) {
-            .container {
-                justify-content: flex-start;
-                padding-top: var(--space-lg);
-            }
-
-            .countdown-section {
-                margin: var(--space-md) 0;
-            }
-
-            .event-days {
-                margin: var(--space-md) 0;
-            }
-        }
-
-        /* Landscape orientation for phones */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .container {
-                justify-content: flex-start;
-                padding: var(--space-sm);
-            }
-
-            .badge {
-                margin-bottom: var(--space-sm);
-            }
-
-            .logo-section {
-                margin-bottom: var(--space-sm);
-            }
-
-            .countdown-section {
-                margin: var(--space-sm) 0;
-            }
-
-            .event-days {
-                grid-template-columns: repeat(2, 1fr);
-                margin: var(--space-sm) 0;
-            }
-
-            .event-day {
-                padding: var(--space-sm);
-            }
-
-            .institute-info {
-                margin-top: var(--space-sm);
-                padding: var(--space-sm);
-            }
-
-            footer {
-                padding: var(--space-sm);
-                margin-top: var(--space-sm);
-            }
-        }
-
-        /* High DPI / Retina Displays */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-            .particle {
-                box-shadow: 0 0 8px var(--primary);
-            }
-        }
-
-        /* Reduced Motion - Accessibility */
         @media (prefers-reduced-motion: reduce) {
 
             *,
@@ -782,35 +910,8 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-
-            .particle {
-                display: none;
-            }
-
-            .grid-overlay {
-                animation: none;
-            }
         }
 
-        /* Touch Devices - Remove hover effects that don't work well */
-        @media (hover: none) and (pointer: coarse) {
-
-            .countdown-item:hover,
-            .event-day:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            .countdown-item:active {
-                transform: scale(0.98);
-            }
-
-            .event-day:active {
-                transform: scale(0.99);
-            }
-        }
-
-        /* Glitch Effect on Hover */
         .main-title:hover {
             animation: glitch 0.3s ease;
         }
@@ -840,57 +941,30 @@
                 transform: translate(0);
             }
         }
-
-        /* Print Styles */
-        @media print {
-
-            .bg-animation,
-            .particles,
-            .grid-overlay,
-            .corner-decoration {
-                display: none !important;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-
-            .main-title {
-                -webkit-text-fill-color: #7b2cbf;
-                color: #7b2cbf;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <!-- Background Elements -->
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
     <div class="particles" id="particles"></div>
 
-    <!-- Corner Decorations -->
     <div class="corner-decoration top-left"></div>
     <div class="corner-decoration top-right"></div>
     <div class="corner-decoration bottom-left"></div>
     <div class="corner-decoration bottom-right"></div>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Coming Soon Badge -->
         <div class="badge">
-            <span class="badge-text">Coming Soon</span>
+            <span class="badge-text">February 20-21, 2026</span>
         </div>
 
-        <!-- Logo Section -->
         <div class="logo-section">
             <h1 class="main-title">TECHNOVA</h1>
             <p class="year">2026</p>
             <p class="tagline">Where Innovation Meets Excellence</p>
         </div>
 
-        <!-- Countdown -->
         <div class="countdown-section">
             <p class="countdown-title">Event Starts In</p>
             <div class="countdown">
@@ -913,7 +987,6 @@
             </div>
         </div>
 
-        <!-- Event Days -->
         <div class="event-days">
             <div class="event-day technical">
                 <div class="day-badge">Day 1</div>
@@ -933,21 +1006,195 @@
             </div>
         </div>
 
-        <!-- Institute Info -->
+        <!-- Technical Events Section -->
+        <section class="events-section">
+            <h2 class="section-title">Technical Events</h2>
+            <div class="events-grid">
+                <!-- Coding -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-code"></i></div>
+                            <h3 class="event-name">Coding</h3>
+                            <p class="event-coordinator">M.V.N Suseel Kumar</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 6281494151</p>
+                            <p class="event-coordinator">D. Diya Reddy</p>
+                            <p class="event-coordinator">T. Kaustubh</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 9000746870</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Test your programming skills in this ultimate coding challenge.
+                                Debug, optimize, and conquer!</p>
+                            <a href="coding.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Expo -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-rocket"></i></div>
+                            <h3 class="event-name">Project Expo</h3>
+                            <p class="event-coordinator">P. Rakesh</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7981431284</p>
+                            <p class="event-coordinator">G. Kavyasree</p>
+                            <p class="event-coordinator">J. Mukesh Babu</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7032149098</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Showcase your innovative projects and let your creativity shine.
+                                Present your ideas to the world!</p>
+                            <a href="project-expo.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Corner -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-globe"></i></div>
+                            <h3 class="event-name">Creative Corner</h3>
+                            <p class="event-coordinator">R.V.S. Sidhardha</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7671925243</p>
+                            <p class="event-coordinator">M. Harshitha</p>
+                            <p class="event-coordinator">B. Karthik</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 9866636210</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Unleash your artistic side! Design, create, and express your
+                                creativity through amazing artworks.</p>
+                            <a href="creative-corner.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Quiz -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-circle-question"></i></div>
+                            <h3 class="event-name">Technical Quiz</h3>
+                            <p class="event-coordinator">Sk. Kamil Ahamed</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 9550969917</p>
+                            <p class="event-coordinator">P. Arshiya Anjum</p>
+                            <p class="event-coordinator">Sumanth</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7013219069</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Put your technical knowledge to test! Compete in this brain-busting
+                                quiz competition.</p>
+                            <a href="technical-quiz.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paper Presentation -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-person-chalkboard"></i></div>
+                            <h3 class="event-name">Paper Presentation</h3>
+                            <p class="event-coordinator">I.V. Vikash</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 9493230997</p>
+                            <p class="event-coordinator">M.V. Deekshitha</p>
+                            <p class="event-coordinator">Ch. Karthikeya</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7893135565</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Present your research papers and innovative ideas to a panel of
+                                experts.</p>
+                            <a href="paper-presentation.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster Presentation -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-icon"><i class="fas fa-chalkboard"></i></div>
+                            <h3 class="event-name">Poster Presentation</h3>
+                            <p class="event-coordinator">Ch. Vishnu Sai</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 6303803554</p>
+                            <p class="event-coordinator">G. Venkata Laya</p>
+                            <p class="event-coordinator">N. Kepha Kiran</p>
+                            <p class="coordinator-phone"><i class="fas fa-phone"></i> 7671065177</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
+                            <p class="event-brief">Design creative posters that communicate complex ideas in visually
+                                stunning ways.</p>
+                            <a href="poster-presentation.html" class="more-info-btn">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coordinators Section -->
+        <section class="coordinators-section">
+            <h2 class="section-title">Our Team</h2>
+
+            <div class="coordinators-grid">
+                <div class="coordinator-card">
+                    <span class="coordinator-role">Co-Patron</span>
+                    <h3 class="coordinator-name">Dr. A. Maheswara Reddy</h3>
+                    <p class="coordinator-designation">HOD CSE AI</p>
+                </div>
+                <div class="coordinator-card">
+                    <span class="coordinator-role">Faculty Coordinator</span>
+                    <h3 class="coordinator-name">Mrs. A. Prasmitha</h3>
+                    <p class="coordinator-designation">Associate Professor</p>
+                </div>
+                <div class="coordinator-card">
+                    <span class="coordinator-role">Faculty Coordinator</span>
+                    <h3 class="coordinator-name">Mr. P. Mohan</h3>
+                    <p class="coordinator-designation">Associate Professor</p>
+                </div>
+            </div>
+
+            <h3 class="section-title" style="margin-top: var(--space-xl);">Student Lead Coordinators</h3>
+            <div class="student-coordinators">
+                <div class="student-card">
+                    <span class="coordinator-role">Lead Coordinator</span>
+                    <h3 class="coordinator-name">Sk. Arshad</h3>
+                    <p class="coordinator-contact">📞 8519955811</p>
+                </div>
+                <div class="student-card">
+                    <span class="coordinator-role">Lead Coordinator</span>
+                    <h3 class="coordinator-name">Medaballi Yamini</h3>
+                </div>
+                <div class="student-card">
+                    <span class="coordinator-role">Lead Coordinator</span>
+                    <h3 class="coordinator-name">V. Praveen</h3>
+                    <p class="coordinator-contact">📞 9341971992</p>
+                </div>
+                <div class="student-card">
+                    <span class="coordinator-role">Lead Coordinator</span>
+                    <h3 class="coordinator-name">Ch. Shivaleela</h3>
+                </div>
+            </div>
+        </section>
+
         <div class="institute-info">
             <p class="presented-by">Presented By</p>
             <h2 class="department">Department of CSE (AI)</h2>
             <p class="college">PBR Visvodaya Institute of Technology and Science</p>
         </div>
 
-        <!-- Footer -->
         <footer>
-            <p class="footer-text">© 2026 Technova. All Rights Reserved.</p>
+            <p class="footer-text">© 2026 Technova | CSE AI Department. All rights reserved.</p>
         </footer>
     </div>
 
     <script>
-        // Countdown Timer
         function updateCountdown() {
             const eventDate = new Date('February 20, 2026 09:00:00').getTime();
             const now = new Date().getTime();
@@ -963,19 +1210,12 @@
                 document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
             }
         }
 
-        // Update countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Create floating particles - Reduced for mobile performance
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const isMobile = window.innerWidth < 768;
@@ -992,7 +1232,6 @@
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
 
-                // Random colors
                 const colors = ['#00f5ff', '#7b2cbf', '#ff006e'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.background = color;
@@ -1002,18 +1241,23 @@
             }
         }
 
-        // Recreate particles on resize for optimal performance
         let resizeTimeout;
         window.addEventListener('resize', function () {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(function () {
-                const particlesContainer = document.getElementById('particles');
-                particlesContainer.innerHTML = '';
+                document.getElementById('particles').innerHTML = '';
                 createParticles();
             }, 250);
         });
 
         createParticles();
+
+        // Touch support for flip cards
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function () {
+                this.classList.toggle('flipped');
+            });
+        });
     </script>
 </body>
 

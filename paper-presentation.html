@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Presentation | Technova 2026</title>
+    <meta name="description" content="Paper Presentation at Technova 2026 - Present your research!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00f5ff;
+            --secondary: #7b2cbf;
+            --accent: #ff006e;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --glow-cyan: 0 0 40px rgba(0, 245, 255, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--darker);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at 20% 80%, rgba(123, 44, 191, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0, 245, 255, 0.1) 0%, transparent 50%), var(--darker);
+        }
+
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: var(--primary);
+            color: var(--darker);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        .event-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(123, 44, 191, 0.1));
+            border: 2px solid rgba(0, 245, 255, 0.3);
+            margin: 0 auto 20px;
+        }
+
+        .event-icon i {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.5));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .event-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #00f5ff 0%, #7b2cbf 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .event-date {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(0, 245, 255, 0.1));
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(0, 245, 255, 0.1);
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .rules-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .rules-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .coordinators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .coordinator-item {
+            background: rgba(0, 245, 255, 0.05);
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .coordinator-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .coordinator-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .coordinator-phone {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .register-btn {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 30px rgba(0, 245, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 5px 30px rgba(0, 245, 255, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 5px 50px rgba(0, 245, 255, 0.7);
+            }
+        }
+
+        .register-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: 'Rajdhani', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 80px 15px 40px;
+            }
+
+            .content-card {
+                padding: 25px;
+            }
+
+            .home-btn {
+                padding: 10px 18px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+    <a href="index.html" class="home-btn">🏠 Home</a>
+
+    <div class="container">
+        <header class="event-header">
+            <div class="event-icon"><i class="fas fa-person-chalkboard"></i></div>
+            <h1 class="event-title">Paper Presentation</h1>
+            <p class="event-date">February 20, 2026</p>
+        </header>
+
+        <div class="quote-box">
+            <p class="quote-text">"Research is to see what everybody else has seen, and to think what nobody else has
+                thought." — Albert Szent-Györgyi</p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">📢 About the Event</h2>
+            <p class="description">
+                The Department of CSE – Artificial Intelligence is organizing a <strong>Paper Presentation
+                    Competition</strong> for students.
+            </p>
+            <p class="description" style="margin-top: 20px;">
+                This event is a great opportunity to:
+            </p>
+            <ul class="rules-list">
+                <li>Present your <strong>innovative ideas</strong></li>
+                <li>Improve your <strong>technical and presentation skills</strong></li>
+                <li>Build confidence in <strong>public speaking</strong></li>
+                <li>Showcase your <strong>knowledge and research abilities</strong></li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">👥 Participation</h2>
+            <ul class="rules-list">
+                <li>Students can participate <strong>individually</strong> or in a <strong>team of two</strong></li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">📚 Topics</h2>
+            <ul class="rules-list">
+                <li>Topics will be <strong>updated soon</strong></li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">📝 Registration</h2>
+            <ul class="rules-list">
+                <li>Interested students are requested to register by filling out the form provided below</li>
+                <li>Click the <strong>Register Now</strong> button to complete your registration</li>
+            </ul>
+        </div>
+
+        <div class="content-card"
+            style="background: linear-gradient(135deg, rgba(123, 44, 191, 0.15), rgba(0, 245, 255, 0.1)); text-align: center;">
+            <p class="description" style="font-size: 1.3rem; color: var(--primary);">
+                ⭐ Come, share your ideas, learn new things, and showcase your talent! ⭐
+            </p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="card-title">👥 Event Coordinators</h2>
+            <div class="coordinators-grid">
+                <div class="coordinator-item">
+                    <h3 class="coordinator-name">I.V. Vikash</h3>
+                    <p class="coordinator-phone">📞 9493230997</p>
+                </div>
+                <div class="coordinator-item">
+                    <h3 class="coordinator-name">M.V. Deekshitha</h3>
+                    <p class="coordinator-phone">Co-Coordinator</p>
+                </div>
+                <div class="coordinator-item">
+                    <h3 class="coordinator-name">Ch. Karthikeya</h3>
+                    <p class="coordinator-phone">📞 7893135565</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdVscQSlffiSWZnlp1tN1p3pFziCSAsZBbTt6u6-ZwPRHS31Q/viewform?usp=dialog"
+            class="register-btn" target="_blank">
+            🚀 Register Now
+        </a>
+
+        <footer>
+            <p>© 2026 Technova | CSE AI Department. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
