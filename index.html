@@ -512,9 +512,39 @@
             transform-style: preserve-3d;
         }
 
-        .flip-card:hover .flip-card-inner,
+        /* Desktop: flip on hover */
+        @media (hover: hover) and (pointer: fine) {
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Mobile: flip only on tap (toggle class) */
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
+        }
+
+        /* Add visual feedback for tap on mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .flip-card {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .flip-card:active .flip-card-front {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+
+            .flip-card .flip-card-front::after {
+                content: '';
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 12px;
+                color: rgba(0, 245, 255, 0.6);
+                opacity: 0.8;
+            }
         }
 
         .flip-card-front,
