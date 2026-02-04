@@ -971,6 +971,177 @@
                 transform: translate(0);
             }
         }
+
+        /* ========== MOBILE TOUCH ANIMATIONS ========== */
+
+        /* Ripple effect container */
+        .ripple-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 245, 255, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Touch-active states for mobile */
+        @media (hover: none) and (pointer: coarse) {
+
+            /* Card touch feedback */
+            .flip-card-front,
+            .event-day,
+            .coordinator-card,
+            .student-card,
+            .countdown-item {
+                transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .flip-card-front:active,
+            .event-day:active,
+            .coordinator-card:active,
+            .student-card:active {
+                transform: scale(0.97);
+                box-shadow: 0 0 25px rgba(0, 245, 255, 0.6);
+            }
+
+            .countdown-item:active {
+                transform: scale(0.95);
+                border-color: var(--primary);
+                box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+            }
+
+            /* Button touch feedback */
+            .more-info-btn,
+            .badge {
+                transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .more-info-btn:active {
+                transform: scale(0.95);
+                box-shadow: 0 0 30px rgba(0, 245, 255, 0.7);
+            }
+
+            .badge:active {
+                transform: scale(0.96);
+            }
+
+            /* Flip card touch - toggle on tap */
+            .flip-card {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .flip-card:active .flip-card-inner {
+                transform: rotateY(10deg);
+            }
+
+            /* Title touch glow */
+            .main-title:active {
+                filter: drop-shadow(0 0 50px rgba(0, 245, 255, 1)) drop-shadow(0 0 80px rgba(123, 44, 191, 0.8));
+            }
+
+            /* Event icons bounce on touch */
+            .event-icon {
+                transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .flip-card:active .event-icon {
+                transform: scale(1.15) rotate(-5deg);
+            }
+
+            /* Section title touch effect */
+            .section-title:active {
+                transform: scale(1.02);
+            }
+
+            /* Day cards special touch */
+            .event-day.technical:active {
+                box-shadow: 0 0 40px rgba(0, 245, 255, 0.5), inset 0 0 30px rgba(0, 245, 255, 0.1);
+            }
+
+            .event-day.non-technical:active {
+                box-shadow: 0 0 40px rgba(255, 0, 110, 0.5), inset 0 0 30px rgba(255, 0, 110, 0.1);
+            }
+        }
+
+        /* Touch pulse animation */
+        @keyframes touchPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 0 15px rgba(0, 245, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 245, 255, 0);
+            }
+        }
+
+        /* Touch glow animation */
+        @keyframes touchGlow {
+            0% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.3);
+            }
+
+            100% {
+                filter: brightness(1);
+            }
+        }
+
+        /* Active touch class for JS */
+        .touch-active {
+            animation: touchPulse 0.4s ease-out;
+        }
+
+        .touch-glow {
+            animation: touchGlow 0.3s ease-out;
+        }
+
+        /* Smooth bounce for interactive elements */
+        @keyframes touchBounce {
+            0% {
+                transform: scale(1);
+            }
+
+            30% {
+                transform: scale(0.95);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+
+            70% {
+                transform: scale(0.98);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .touch-bounce {
+            animation: touchBounce 0.4s ease-out;
+        }
     </style>
 </head>
 
@@ -1288,6 +1459,108 @@
                 this.classList.toggle('flipped');
             });
         });
+
+        // ========== MOBILE TOUCH ANIMATIONS ==========
+
+        // Detect if touch device
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (isTouchDevice) {
+            // Create ripple effect function
+            function createRipple(event, element) {
+                const rect = element.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+
+                // Get touch position or center of element
+                let x, y;
+                if (event.touches && event.touches[0]) {
+                    x = event.touches[0].clientX - rect.left - size / 2;
+                    y = event.touches[0].clientY - rect.top - size / 2;
+                } else {
+                    x = rect.width / 2 - size / 2;
+                    y = rect.height / 2 - size / 2;
+                }
+
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+
+                element.appendChild(ripple);
+
+                // Remove ripple after animation
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            }
+
+            // Add ripple to buttons
+            document.querySelectorAll('.more-info-btn, .badge').forEach(btn => {
+                btn.style.position = 'relative';
+                btn.style.overflow = 'hidden';
+
+                btn.addEventListener('touchstart', function (e) {
+                    createRipple(e, this);
+                }, { passive: true });
+            });
+
+            // Add touch bounce to cards
+            const touchElements = document.querySelectorAll('.countdown-item, .event-day, .coordinator-card, .student-card');
+
+            touchElements.forEach(element => {
+                element.addEventListener('touchstart', function () {
+                    this.classList.add('touch-active');
+                }, { passive: true });
+
+                element.addEventListener('touchend', function () {
+                    setTimeout(() => {
+                        this.classList.remove('touch-active');
+                    }, 150);
+                }, { passive: true });
+            });
+
+            // Add glow effect to flip cards
+            document.querySelectorAll('.flip-card').forEach(card => {
+                card.addEventListener('touchstart', function () {
+                    this.querySelector('.flip-card-front').classList.add('touch-glow');
+                }, { passive: true });
+
+                card.addEventListener('touchend', function () {
+                    setTimeout(() => {
+                        const front = this.querySelector('.flip-card-front');
+                        if (front) front.classList.remove('touch-glow');
+                    }, 300);
+                }, { passive: true });
+            });
+
+            // Main title touch effect
+            const mainTitle = document.querySelector('.main-title');
+            if (mainTitle) {
+                mainTitle.addEventListener('touchstart', function () {
+                    this.classList.add('touch-bounce');
+                }, { passive: true });
+
+                mainTitle.addEventListener('touchend', function () {
+                    setTimeout(() => {
+                        this.classList.remove('touch-bounce');
+                    }, 400);
+                }, { passive: true });
+            }
+
+            // Vibration feedback (if supported)
+            function vibrate(duration = 10) {
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(duration);
+                }
+            }
+
+            // Add subtle vibration to button taps
+            document.querySelectorAll('.more-info-btn, .flip-card').forEach(el => {
+                el.addEventListener('touchstart', () => vibrate(10), { passive: true });
+            });
+        }
     </script>
 </body>
 

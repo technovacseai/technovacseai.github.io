@@ -332,6 +332,69 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* ========== MOBILE TOUCH ANIMATIONS ========== */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 245, 255, 0.4);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+
+            .content-card,
+            .coordinator-item,
+            .home-btn,
+            .register-btn {
+                transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .content-card:active,
+            .coordinator-item:active {
+                transform: scale(0.98);
+                box-shadow: 0 0 25px rgba(0, 245, 255, 0.5);
+            }
+
+            .home-btn:active,
+            .register-btn:active {
+                transform: scale(0.95);
+                box-shadow: 0 0 30px rgba(0, 245, 255, 0.7);
+            }
+
+            .quote-box:active {
+                border-color: var(--primary);
+                box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+            }
+
+            .event-icon:active {
+                transform: scale(1.1) rotate(-5deg);
+            }
+        }
+
+        @keyframes touchPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.6);
+            }
+
+            100% {
+                box-shadow: 0 0 0 15px rgba(0, 245, 255, 0);
+            }
+        }
+
+        .touch-active {
+            animation: touchPulse 0.4s ease-out;
+        }
     </style>
 </head>
 
@@ -401,6 +464,15 @@
             <p>© 2026 Technova | CSE AI Department. All rights reserved.</p>
         </footer>
     </div>
+    <script>
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) {
+            function createRipple(e, el) { const rect = el.getBoundingClientRect(); const ripple = document.createElement('span'); ripple.className = 'ripple'; const size = Math.max(rect.width, rect.height); ripple.style.width = ripple.style.height = size + 'px'; const x = (e.touches?.[0]?.clientX || rect.left + rect.width / 2) - rect.left - size / 2; const y = (e.touches?.[0]?.clientY || rect.top + rect.height / 2) - rect.top - size / 2; ripple.style.left = x + 'px'; ripple.style.top = y + 'px'; el.appendChild(ripple); ripple.addEventListener('animationend', () => ripple.remove()); }
+            document.querySelectorAll('.register-btn, .home-btn').forEach(btn => { btn.style.position = 'relative'; btn.style.overflow = 'hidden'; btn.addEventListener('touchstart', function (e) { createRipple(e, this); }, { passive: true }); });
+            document.querySelectorAll('.content-card, .coordinator-item').forEach(el => { el.addEventListener('touchstart', function () { this.classList.add('touch-active'); }, { passive: true }); el.addEventListener('touchend', function () { setTimeout(() => this.classList.remove('touch-active'), 150); }, { passive: true }); });
+            document.querySelectorAll('.register-btn').forEach(el => { el.addEventListener('touchstart', () => navigator.vibrate?.(10), { passive: true }); });
+        }
+    </script>
 </body>
 
 </html>
