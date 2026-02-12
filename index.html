@@ -536,14 +536,35 @@
             }
 
             .flip-card .flip-card-front::after {
-                content: '';
+                content: '👆 Tap to flip';
                 position: absolute;
-                bottom: 15px;
+                bottom: 12px;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 12px;
-                color: rgba(0, 245, 255, 0.6);
-                opacity: 0.8;
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: rgba(0, 245, 255, 0.5);
+                opacity: 0.9;
+                animation: tapHintPulse 2s ease-in-out infinite;
+            }
+
+            .flip-card.flipped .flip-card-front::after {
+                display: none;
+            }
+
+            @keyframes tapHintPulse {
+
+                0%,
+                100% {
+                    opacity: 0.5;
+                }
+
+                50% {
+                    opacity: 1;
+                }
             }
         }
 
@@ -1447,8 +1468,17 @@
 
         // Touch support for flip cards
         document.querySelectorAll('.flip-card').forEach(card => {
-            card.addEventListener('click', function () {
+            card.addEventListener('click', function (e) {
+                // Don't flip when clicking "More Info" button
+                if (e.target.closest('.more-info-btn')) return;
                 this.classList.toggle('flipped');
+            });
+        });
+
+        // Prevent "More Info" clicks from toggling flip
+        document.querySelectorAll('.more-info-btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
             });
         });
 
