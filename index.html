@@ -963,6 +963,27 @@
             }
         }
 
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .blink-text {
+            animation: blink 1s infinite;
+            font-family: 'Orbitron', sans-serif;
+            font-size: var(--text-base);
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
         .main-title:hover {
             animation: glitch 0.3s ease;
         }
@@ -1280,8 +1301,7 @@
                         </div>
                         <div class="flip-card-back">
                             <div class="event-date-info"><i class="fas fa-calendar-alt"></i> Feb 20, 2026</div>
-                            <p class="event-brief">Unleash your artistic side! Design, create, and express your
-                                creativity through amazing artworks.</p>
+                            <p class="event-brief blink-text">Updated Soon</p>
                             <a href="creative-corner.html" class="more-info-btn">More Info</a>
                         </div>
                     </div>
