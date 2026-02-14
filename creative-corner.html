@@ -395,6 +395,30 @@
         .touch-active {
             animation: touchPulse 0.4s ease-out;
         }
+
+        .updated-soon {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00f5ff 0%, #7b2cbf 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -409,124 +433,9 @@
             <p class="event-date">February 20, 2026</p>
         </header>
 
-        <div class="quote-box">
-            <p class="quote-text">"Dream It. Design It. Present It. Own It."</p>
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 50vh;">
+            <h2 class="updated-soon">Updated Soon</h2>
         </div>
-
-        <div class="content-card">
-            <h2 class="card-title">📋 About the Event</h2>
-            <p class="description">
-                Creative Corner is where technology meets art! This event celebrates the fusion of creativity
-                and innovation. Build stunning websites using modern tools and AI assistance. Whether you're a
-                web developer, UI/UX enthusiast, or creative coder, this is your canvas to express your
-                imagination and compete with fellow creative minds!
-            </p>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">👥 Team Formation</h2>
-            <ul class="rules-list">
-                <li>Each team must consist of <strong>1 or 2 members</strong>
-                </li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">📜 Rules & Guidelines</h2>
-            <ul class="rules-list">
-                <li>The <strong>problem statement</strong> must be provided by the participants during the registration
-                    process</li>
-                <li>The problem statement should demonstrate <strong>innovation</strong> and a <strong>real-time use
-                        case</strong></li>
-                <li>Bringing a <strong>laptop</strong> and having <strong>internet access</strong> is mandatory for all
-                    participants</li>
-                <li>Participants are allowed to build a website using <strong>prompt engineering</strong> or
-                    <strong>manual development</strong>
-                </li>
-                <li>The website developed must be <strong>responsive</strong></li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">🤖 Allowed AI Tools</h2>
-            <p class="description" style="margin-bottom: 15px;">Participants are allowed to use the following AI tools:
-            </p>
-            <ul class="rules-list">
-                <li><strong>Anti-Gravity</strong></li>
-                <li><strong>Lovable AI</strong></li>
-                <li><strong>Cursor AI</strong></li>
-                <li><strong>Bolt</strong></li>
-                <li><strong>Figma</strong></li>
-                <li><strong>VS Code Copilot</strong></li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">⏱️ Event Schedule</h2>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <div
-                    style="background: rgba(0, 245, 255, 0.05); border-left: 3px solid var(--primary); padding: 15px 20px; border-radius: 0 10px 10px 0;">
-                    <strong style="color: var(--primary);">📝 Planning Phase</strong>
-                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px;">30 minutes</p>
-                </div>
-                <div
-                    style="background: rgba(123, 44, 191, 0.1); border-left: 3px solid var(--secondary); padding: 15px 20px; border-radius: 0 10px 10px 0;">
-                    <strong style="color: var(--secondary);">💻 Website Development Phase</strong>
-                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px;">1 hour 30 minutes</p>
-                </div>
-                <div
-                    style="background: rgba(255, 0, 110, 0.1); border-left: 3px solid var(--accent); padding: 15px 20px; border-radius: 0 10px 10px 0;">
-                    <strong style="color: var(--accent);">🎯 Evaluation Phase</strong>
-                    <p style="color: rgba(255,255,255,0.7); margin-top: 5px;">1 hour</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">📲 Communication</h2>
-            <ul class="rules-list">
-                <li>A <strong>WhatsApp group link</strong> will be sent to your registered email</li>
-                <li>If not received, please contact the Event Coordinator</li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">🎖 Certificates</h2>
-            <ul class="rules-list">
-                <li><strong>Participation certificates</strong> will be provided to all participants</li>
-                <li><strong>Merit certificates</strong> will be awarded to the winning participants</li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">💰 Registration Fee</h2>
-            <ul class="rules-list">
-                <li><strong>₹100</strong> per head</li>
-            </ul>
-        </div>
-
-        <div class="content-card">
-            <h2 class="card-title">👥 Event Coordinators</h2>
-            <div class="coordinators-grid">
-                <div class="coordinator-item">
-                    <h3 class="coordinator-name">R.V.S. Sidhardha</h3>
-                    <p class="coordinator-phone">📞 7671925243</p>
-                </div>
-                <div class="coordinator-item">
-                    <h3 class="coordinator-name">M. Harshitha</h3>
-                    <p class="coordinator-phone">Co-Coordinator</p>
-                </div>
-                <div class="coordinator-item">
-                    <h3 class="coordinator-name">B. Karthik</h3>
-                    <p class="coordinator-phone">📞 9866636210</p>
-                </div>
-            </div>
-        </div>
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJnWhI_IuQYUi-Q6z-0fmM2xGOVwF9_HMbb2vIAKI9WEDJkQ/viewform?usp=dialog"
-            class="register-btn" target="_blank">
-            🚀 Register Now
-        </a>
 
         <footer>
             <p>© 2026 Technova | CSE AI Department. All rights reserved.</p>
