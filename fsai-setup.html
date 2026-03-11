@@ -3,63 +3,939 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Round 2 - TechNova</title>
+    <title>Alexa-FSAI-Exam | Project Setup Guide</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
+      * {
         margin: 0;
-        background-color: #f4f4f4;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a1a;
+        --card: #12122a;
+        --card2: #1a1a3a;
+        --accent: #6c5ce7;
+        --accent2: #a29bfe;
+        --accent3: #00cec9;
+        --text: #e8e8f0;
+        --text2: #8888aa;
+        --border: #2a2a4a;
+        --success: #00b894;
+        --warning: #fdcb6e;
+        --danger: #e17055;
+        --code-bg: #1e1e3a;
+        --glow: 0 0 20px rgba(108, 92, 231, 0.3);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(108, 92, 231, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(108, 92, 231, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        padding: 60px 0 40px;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 20px;
+        background: rgba(108, 92, 231, 0.15);
+        border: 1px solid rgba(108, 92, 231, 0.3);
+        color: var(--accent2);
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
       h1 {
-        margin-bottom: 30px;
-        color: #333;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 12px;
       }
 
-      a {
-        display: block;
-        margin: 15px 0;
-        padding: 15px 30px;
-        font-size: 18px;
-        color: #fff;
+      header p {
+        color: var(--text2);
+        font-size: 17px;
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      .toc {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .toc h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+        color: var(--accent2);
+      }
+
+      .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+      }
+
+      .toc a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: var(--card2);
+        color: var(--text);
         text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.2s;
+        border: 1px solid transparent;
+      }
+
+      .toc a:hover {
+        border-color: var(--accent);
+        box-shadow: var(--glow);
+      }
+
+      .toc a .num {
+        background: var(--accent);
+        color: #fff;
+        width: 26px;
+        height: 26px;
         border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      section {
+        margin: 48px 0;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      h2 .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      h2 .icon.purple {
+        background: rgba(108, 92, 231, 0.15);
+        border: 1px solid rgba(108, 92, 231, 0.3);
+      }
+
+      h2 .icon.teal {
+        background: rgba(0, 206, 201, 0.15);
+        border: 1px solid rgba(0, 206, 201, 0.3);
+      }
+
+      h2 .icon.orange {
+        background: rgba(225, 112, 85, 0.15);
+        border: 1px solid rgba(225, 112, 85, 0.3);
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 24px 0 12px;
+        color: var(--accent2);
+      }
+
+      .pkg-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+        margin: 16px 0;
+      }
+
+      .pkg-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        transition: 0.25s;
+      }
+
+      .pkg-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: var(--glow);
+      }
+
+      .pkg-card h4 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--accent3);
+      }
+
+      .pkg-card p {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.5;
+      }
+
+      .pkg-tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-right: 4px;
+        margin-bottom: 4px;
+      }
+
+      .pkg-tag.core {
+        background: rgba(108, 92, 231, 0.2);
+        color: var(--accent2);
+      }
+
+      .pkg-tag.util {
+        background: rgba(0, 206, 201, 0.2);
+        color: var(--accent3);
+      }
+
+      .step-block {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 24px 28px;
+        margin: 16px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .step-block::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(180deg, var(--accent), var(--accent3));
+      }
+
+      .step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      .step-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+      }
+
+      .cmd {
+        display: block;
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 10px 0;
+        color: #e8e8f0;
+        overflow-x: auto;
+        position: relative;
+      }
+
+      .cmd::before {
+        content: ">";
+        color: var(--accent);
+        margin-right: 8px;
+        font-weight: 700;
+      }
+
+      .cmd.multi::before {
+        content: "";
+      }
+
+      .note {
+        background: rgba(0, 206, 201, 0.08);
+        border: 1px solid rgba(0, 206, 201, 0.2);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 12px 0;
+        font-size: 13px;
+        color: var(--accent3);
+      }
+
+      .note::before {
+        content: "💡 ";
+        font-size: 15px;
+      }
+
+      .warn {
+        background: rgba(253, 203, 110, 0.08);
+        border: 1px solid rgba(253, 203, 110, 0.2);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin: 12px 0;
+        font-size: 13px;
+        color: var(--warning);
+      }
+
+      .warn::before {
+        content: "⚠️ ";
+        font-size: 15px;
+      }
+
+      .folder-tree {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--text2);
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      .folder-tree .dir {
+        color: var(--accent2);
+      }
+
+      .folder-tree .file {
+        color: var(--accent3);
+      }
+
+      .tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 0;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 0;
+      }
+
+      .tab {
+        padding: 10px 20px;
+        border-radius: 10px 10px 0 0;
+        background: transparent;
+        color: var(--text2);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-bottom: none;
+        transition: 0.2s;
+        font-family: "Inter", sans-serif;
+      }
+
+      .tab.active {
+        background: var(--card);
+        color: var(--accent2);
+        border-color: var(--border);
+      }
+
+      .tab-content {
+        display: none;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-top: none;
+        border-radius: 0 0 14px 14px;
+        padding: 24px 28px;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .divider {
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          var(--accent3),
+          transparent
+        );
+        margin: 60px 0;
+        border-radius: 2px;
+      }
+
+      footer {
         text-align: center;
-        width: 350px;
+        padding: 40px 0;
+        color: var(--text2);
+        font-size: 13px;
+        border-top: 1px solid var(--border);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      section {
+        animation: fadeIn 0.5s ease-out;
       }
     </style>
   </head>
 
   <body>
-    <h1>FSAI Lab Required Libraries and Tools Installation</h1>
-    <table width="60%" border="2" cellspacing="0" cellpadding="10px">
-      <tr>
-        <th>Purpose</th>
-        <th>Command</th>
-      </tr>
-      <tr>
-        <td>Create React Application</td>
-        <td>
-          npx create-react-app myapp <br />
-          <div style="text-align: center">OR <br /></div>
-          npm create vite@latest myapp
-        </td>
-      </tr>
-      <tr>
-        <td>Install Required Packages For Lab Exam</td>
-        <td>npm install express mongoose cors axios</td>
-      </tr>
-      <tr>
-        <td>Open Terminal Install Required Python Packages</td>
-        <td>
-          pip install numpy pandas requests flask flask-cors scikit-learn joblib
-        </td>
-      </tr>
-    </table>
+    <div class="bg-grid"></div>
+    <div class="container">
+      <header>
+        <div class="badge">📘 Full-Stack AI Exam Setup</div>
+        <h1>Alexa-FSAI-Exam</h1>
+        <p>
+          Complete step-by-step guide to create the project structure with
+          React, Angular, Node.js, Express, Flask, and AI/ML services.
+        </p>
+      </header>
+
+      <!-- TABLE OF CONTENTS -->
+      <div class="toc">
+        <h2>📑 Table of Contents</h2>
+        <div class="toc-grid">
+          <a href="#packages"
+            ><span class="num">1</span> Required Packages &amp; Modules</a
+          >
+          <a href="#folder"
+            ><span class="num">2</span> Folder Structure Overview</a
+          >
+          <a href="#app1"><span class="num">3</span> APP1 – Full Setup</a>
+          <a href="#app2"><span class="num">4</span> APP2 – Full Setup</a>
+          <a href="#angular"
+            ><span class="num">5</span> AngularAPP – Full Setup</a
+          >
+          <a href="#run"><span class="num">6</span> Running the Applications</a>
+        </div>
+      </div>
+
+      <!-- SECTION 1: PACKAGES -->
+      <section id="packages">
+        <h2>
+          <span class="icon purple">📦</span> Required Packages &amp; Modules
+        </h2>
+
+        <div class="tabs">
+          <button class="tab active" onclick="showTab(event, 'tab-fe')">
+            Frontend (React)
+          </button>
+          <button class="tab" onclick="showTab(event, 'tab-be')">
+            Backend (Node/Express)
+          </button>
+          <button class="tab" onclick="showTab(event, 'tab-py')">
+            Python (Flask/AI)
+          </button>
+          <button class="tab" onclick="showTab(event, 'tab-ng')">
+            Angular
+          </button>
+        </div>
+
+        <div class="tab-content active" id="tab-fe">
+          <h3>React Frontend Packages</h3>
+          <div class="note">
+            Most packages like <code>react</code>, <code>react-dom</code>,
+            <code>react-scripts</code> are <strong>auto-installed</strong> when
+            you run <code>npx create-react-app</code>. Only
+            <strong>axios</strong> needs to be installed separately.
+          </div>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <h4>react</h4>
+              <span class="pkg-tag core">core</span>
+              <p>
+                Core UI library for building component-based interfaces.
+                <strong>(Auto-installed by CRA)</strong>
+              </p>
+            </div>
+            <div class="pkg-card">
+              <h4>axios</h4>
+              <span class="pkg-tag util">util</span>
+              <p>
+                HTTP client for making API requests to the backend.
+                <strong>(Install separately)</strong>
+              </p>
+            </div>
+          </div>
+          <div class="cmd"><code>npx create-react-app frontend</code></div>
+          <div class="cmd"><code>cd frontend</code></div>
+          <div class="cmd"><code>npm install axios</code></div>
+        </div>
+
+        <div class="tab-content" id="tab-be">
+          <h3>Node.js / Express Backend Packages</h3>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <h4>express</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Fast, minimalist web framework for Node.js.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>mongoose</h4>
+              <span class="pkg-tag core">core</span>
+              <p>MongoDB ODM for data modeling.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>cors</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Enable Cross-Origin Resource Sharing.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>body-parser</h4>
+              <span class="pkg-tag util">util</span>
+              <p>Parse incoming request bodies.</p>
+            </div>
+          </div>
+          <div class="cmd"><code>npm init -y</code></div>
+          <div class="cmd">
+            <code>npm install express mongoose cors body-parser</code>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-py">
+          <h3>Python / Flask / AI-ML Packages</h3>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <h4>flask</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Lightweight Python web framework for APIs.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>flask-cors</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Handle CORS in Flask applications.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>numpy</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Numerical computing with arrays &amp; matrices.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>pandas</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Data manipulation and analysis.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>scikit-learn</h4>
+              <span class="pkg-tag core">core</span>
+              <p>Machine learning algorithms &amp; utilities.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>joblib</h4>
+              <span class="pkg-tag util">util</span>
+              <p>Save/load ML models efficiently.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>requests</h4>
+              <span class="pkg-tag util">util</span>
+              <p>HTTP requests from Python.</p>
+            </div>
+            <div class="pkg-card">
+              <h4>matplotlib</h4>
+              <span class="pkg-tag util">util</span>
+              <p>Data visualization and plotting.</p>
+            </div>
+          </div>
+          <div class="cmd">
+            <code
+              >pip install flask flask-cors numpy pandas scikit-learn joblib
+              requests matplotlib</code
+            >
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-ng">
+          <h3>Angular Packages</h3>
+          <div class="note">
+            All Angular packages (<code>@angular/core</code>,
+            <code>@angular/router</code>, <code>@angular/forms</code>,
+            <code>rxjs</code>, <code>typescript</code>, <code>zone.js</code>)
+            are <strong>auto-installed</strong> when you run
+            <code>ng new</code>. Only <strong>@angular/cli</strong>
+            needs to be installed globally first.
+          </div>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <h4>@angular/cli</h4>
+              <span class="pkg-tag core">core</span>
+              <p>
+                CLI tool to create, build, and serve Angular apps.
+                <strong>(Install globally)</strong>
+              </p>
+            </div>
+          </div>
+          <div class="cmd"><code>npm install -g @angular/cli</code></div>
+          <div class="cmd"><code>ng new AngularAPP</code></div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 2: FOLDER STRUCTURE -->
+      <section id="folder">
+        <h2><span class="icon teal">🗂️</span> Folder Structure Overview</h2>
+        <div class="folder-tree">
+          <span class="dir">C:\Alexa-FSAI-Exam\</span><br />
+          ├── <span class="dir">APP1\</span><br />
+          │&nbsp;&nbsp; ├──
+          <span class="dir">backend\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            style="color: #666"
+            >← Node.js + Express + MongoDB</span
+          ><br />
+          │&nbsp;&nbsp; ├──
+          <span class="dir">frontend\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #666"
+            >← React Application</span
+          ><br />
+          │&nbsp;&nbsp; └──
+          <span class="dir">ai-service\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #666"
+            >← Flask + ML Models</span
+          ><br />
+          ├── <span class="dir">APP2\</span><br />
+          │&nbsp;&nbsp; ├──
+          <span class="dir">backend\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            style="color: #666"
+            >← Node.js + Express + MongoDB</span
+          ><br />
+          │&nbsp;&nbsp; ├──
+          <span class="dir">frontend\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #666"
+            >← React Application</span
+          ><br />
+          │&nbsp;&nbsp; └──
+          <span class="dir">ai-service\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #666"
+            >← Flask + ML Models</span
+          ><br />
+          └──
+          <span class="dir">AngularAPP\</span
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+            style="color: #666"
+            >← Angular Application</span
+          >
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 3: APP1 -->
+      <section id="app1">
+        <h2><span class="icon purple">🚀</span> APP1 – Complete Setup</h2>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">1</span> Create the Root Folder
+          </div>
+          <p>
+            Open <strong>Command Prompt</strong> or <strong>PowerShell</strong>:
+          </p>
+          <div class="cmd"><code>mkdir C:\Alexa-FSAI-Exam</code></div>
+          <div class="cmd"><code>cd C:\Alexa-FSAI-Exam</code></div>
+          <div class="cmd"><code>mkdir APP1</code></div>
+          <div class="cmd"><code>cd APP1</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">2</span> Setup Backend (Node.js + Express)
+          </div>
+          <div class="cmd"><code>mkdir backend</code></div>
+          <div class="cmd"><code>cd backend</code></div>
+          <div class="cmd"><code>npm init -y</code></div>
+          <div class="cmd">
+            <code>npm install express mongoose cors body-parser</code>
+          </div>
+          <div class="cmd"><code>cd ..</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">3</span> Setup Frontend (React)
+          </div>
+          <div class="cmd"><code>npx create-react-app frontend</code></div>
+          <div class="cmd"><code>cd frontend</code></div>
+          <div class="cmd"><code>npm install axios</code></div>
+          <div class="note">
+            React app is ready at <code>http://localhost:3000</code> — run with
+            <code>npm start</code>.
+          </div>
+          <div class="cmd"><code>cd ..</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">4</span> Setup AI Service (Flask + ML)
+          </div>
+          <div class="cmd"><code>mkdir ai-service</code></div>
+          <div class="cmd"><code>cd ai-service</code></div>
+          <div class="cmd">
+            <code
+              >pip install flask flask-cors numpy pandas scikit-learn joblib
+              requests</code
+            >
+          </div>
+          <div class="cmd"><code>cd ..\..</code></div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 4: APP2 -->
+      <section id="app2">
+        <h2><span class="icon teal">🚀</span> APP2 – Complete Setup</h2>
+        <div class="warn">
+          APP2 follows the <strong>exact same structure</strong> as APP1. Repeat
+          all steps inside the APP2 folder.
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">1</span> Create APP2 Folder
+          </div>
+          <div class="cmd"><code>cd C:\Alexa-FSAI-Exam</code></div>
+          <div class="cmd"><code>mkdir APP2</code></div>
+          <div class="cmd"><code>cd APP2</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">2</span> Setup Backend (Node.js + Express)
+          </div>
+          <div class="cmd"><code>mkdir backend</code></div>
+          <div class="cmd"><code>cd backend</code></div>
+          <div class="cmd"><code>npm init -y</code></div>
+          <div class="cmd">
+            <code>npm install express mongoose cors body-parser</code>
+          </div>
+          <div class="cmd"><code>cd ..</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">3</span> Setup Frontend (React)
+          </div>
+          <div class="cmd"><code>npx create-react-app frontend</code></div>
+          <div class="cmd"><code>cd frontend</code></div>
+          <div class="cmd"><code>npm install axios</code></div>
+          <div class="cmd"><code>cd ..</code></div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">4</span> Setup AI Service (Flask + ML)
+          </div>
+          <div class="cmd"><code>mkdir ai-service</code></div>
+          <div class="cmd"><code>cd ai-service</code></div>
+          <div class="cmd">
+            <code
+              >pip install flask flask-cors numpy pandas scikit-learn joblib
+              requests</code
+            >
+          </div>
+          <div class="cmd"><code>cd ..\..</code></div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 5: AngularAPP -->
+      <section id="angular">
+        <h2><span class="icon orange">🅰️</span> AngularAPP – Complete Setup</h2>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">1</span> Install Angular CLI Globally
+          </div>
+          <div class="cmd"><code>npm install -g @angular/cli</code></div>
+          <div class="note">
+            Verify installation: <code>ng version</code> — should show Angular
+            CLI version.
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">2</span> Create Angular Application
+          </div>
+          <div class="cmd"><code>cd C:\Alexa-FSAI-Exam</code></div>
+          <div class="cmd"><code>ng new AngularAPP</code></div>
+          <div class="note">
+            Select <strong>Yes</strong> for routing when prompted. This creates
+            the full Angular project with routing module.
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-title">
+            <span class="step-num">3</span> Run Angular App
+          </div>
+          <div class="cmd"><code>cd AngularAPP</code></div>
+          <div class="cmd"><code>ng serve</code></div>
+          <div class="note">
+            All required packages are <strong>auto-installed</strong> by
+            <code>ng new</code>. Angular app runs at
+            <code>http://localhost:4200</code>.
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SECTION 6: RUNNING -->
+      <section id="run">
+        <h2><span class="icon purple">▶️</span> Running the Applications</h2>
+
+        <div
+          class="pkg-grid"
+          style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))"
+        >
+          <div class="pkg-card" style="border-left: 3px solid var(--accent)">
+            <h4>APP1 / APP2 – Backend</h4>
+            <div class="cmd"><code>cd backend</code></div>
+            <div class="cmd"><code>node server.js</code></div>
+            <p style="margin-top: 8px">
+              Runs on <strong>:5000</strong> (APP1) /
+              <strong>:5002</strong> (APP2)
+            </p>
+          </div>
+          <div class="pkg-card" style="border-left: 3px solid var(--accent3)">
+            <h4>APP1 / APP2 – Frontend</h4>
+            <div class="cmd"><code>cd frontend</code></div>
+            <div class="cmd"><code>npm start</code></div>
+            <p style="margin-top: 8px">
+              Runs on <strong>:3000</strong> (APP1) /
+              <strong>:3001</strong> (APP2)
+            </p>
+          </div>
+          <div class="pkg-card" style="border-left: 3px solid var(--warning)">
+            <h4>APP1 / APP2 – AI Service</h4>
+            <div class="cmd"><code>cd ai-service</code></div>
+            <div class="cmd"><code>python app.py</code></div>
+            <p style="margin-top: 8px">
+              Runs on <strong>:5001</strong> (APP1) /
+              <strong>:5003</strong> (APP2)
+            </p>
+          </div>
+          <div class="pkg-card" style="border-left: 3px solid var(--danger)">
+            <h4>AngularAPP</h4>
+            <div class="cmd"><code>cd AngularAPP</code></div>
+            <div class="cmd"><code>ng serve</code></div>
+            <p style="margin-top: 8px">Runs on <strong>:4200</strong></p>
+          </div>
+        </div>
+
+        <div class="warn" style="margin-top: 20px">
+          <strong>Prerequisites:</strong> Make sure you have
+          <strong>Node.js (v18+)</strong>, <strong>Python (3.9+)</strong>,
+          <strong>npm</strong>, and <strong>MongoDB</strong> installed on your
+          system before starting.
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          Alexa-FSAI-Exam Setup Guide &bull; Full-Stack AI Exam Projects &bull;
+          2026
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      function showTab(e, tabId) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((c) => c.classList.remove("active"));
+        e.target.classList.add("active");
+        document.getElementById(tabId).classList.add("active");
+      }
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .querySelector(a.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    </script>
   </body>
 </html>
